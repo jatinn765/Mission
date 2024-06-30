@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mission
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mission
+  template:
+    metadata:
+      labels:
+        app: mission
+    spec:
+      serviceAccountName: jenkins
+      containers:
+      - name: mission
+        image: jatin765/mission:v1
+        ports:
+        - containerPort: 8080
