@@ -73,7 +73,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Kubernetes'){
+        stage('Deploy to Kubernetes'){ # first install kubectl on jenkins server and user kubectl path in pipeline
             steps {
                 withKubeConfig(caCertificate: '', clusterName: 'jatin-eks', contextName: '', credentialsId: 'kube-cred', namespace: 'default', restrictKubeConfigAccess: false, serverUrl: 'https://543F7930D797DDD29109DE4C59DFE3C2.gr7.ap-south-1.eks.amazonaws.com') {
                     sh "path/to/kubectl apply -f deployment.yml"
